@@ -1,0 +1,298 @@
+<template>
+	<div>
+		<v-app>
+			<!-- app bar -->
+			<v-app-bar
+				height="60"
+				color="amber"
+				dark
+				elevate-on-scroll
+				fixed
+			>
+				<v-app-bar-nav-icon class="bmdHide" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+				<v-app-bar-title class="mr-5">xPortal</v-app-bar-title>
+				<v-spacer></v-spacer>
+
+				<v-text-field
+					style="margin-bottom:-25px;"
+					prepend-inner-icon="mdi-magnify"
+					clearable
+          label="Search"
+          dense
+          color="deep-purple"
+          outlined
+         ></v-text-field>
+
+				<v-menu
+		      transition="slide-x-transition"
+		      bottom
+		      right
+		      auto
+		      offset-y
+		    >
+		      <template v-slot:activator="{ on, attrs }">
+		        <v-btn
+		        	class="bsmHide"
+		          color="amber"
+		          elevation="0"
+		          dark
+		          v-bind="attrs"
+		          v-on="on"
+		        >
+		          Kinolar
+		        </v-btn>
+		      </template>
+
+		      <v-list>
+		        <v-list-item>
+		          <v-list-item-title>Item title</v-list-item-title>
+		        </v-list-item>
+		      </v-list>
+    		</v-menu>
+
+    		<v-menu
+		      transition="slide-x-transition"
+		      bottom
+		      right
+		      auto
+		      offset-y
+		    >
+		      <template v-slot:activator="{ on, attrs }">
+		        <v-btn
+		        	class="bsmHide"
+		          color="amber"
+		          elevation="0"
+		          dark
+		          v-bind="attrs"
+		          v-on="on"
+		        >
+		          Aydymlar
+		          <v-icon right>mdi-arrow-down</v-icon>
+		        </v-btn>
+		      </template>
+
+		      <v-list>
+		        <v-list-item>
+		          <v-list-item-title>Item title</v-list-item-title>
+		        </v-list-item>
+		      </v-list>
+    		</v-menu>
+
+    		<v-menu
+    			class="bsmHide"
+		      transition="slide-y-transition"
+		      bottom
+		      right
+		      auto
+		      offset-y
+		    >
+		      <template v-slot:activator="{ on, attrs }">
+		        <v-btn
+		        	class="bsmHide"
+		          color="amber"
+		          elevation="0"
+		          dark
+		          v-bind="attrs"
+		          v-on="on"
+		        >
+		          Bolumler
+		          <v-icon right>mdi-arrow-down</v-icon>
+		        </v-btn>
+		      </template>
+
+		      <v-list>
+		        <v-list-item>
+		          <v-list-item-title>Item 1</v-list-item-title>
+		        </v-list-item>
+		        <v-list-item>
+		          <v-list-item-title>Item 2</v-list-item-title>
+		        </v-list-item>
+		        <v-list-item>
+		          <v-list-item-title>Item 3</v-list-item-title>
+		        </v-list-item>
+		      </v-list>
+    		</v-menu>
+
+    		<v-menu
+		      transition="slide-x-transition"
+		      bottom
+		      right
+		      auto
+		      offset-y
+		    >
+		      <template v-slot:activator="{ on, attrs }">
+		        <v-btn
+		        	class="bsmHide"
+		          color="amber"
+		          elevation="0"
+		          dark
+		          v-bind="attrs"
+		          v-on="on"
+		        >
+		          Wideolar
+		        </v-btn>
+		      </template>
+
+		      <v-list>
+		        <v-list-item>
+		          <v-list-item-title>Item 1</v-list-item-title>
+		        </v-list-item>
+		      </v-list>
+    		</v-menu>
+			</v-app-bar>
+
+			<!-- nav drawer -->
+			<v-navigation-drawer
+	      v-model="drawer"
+	      absolute
+	      temporary
+	    >
+	      <v-list
+	        nav
+	        dense
+	      >
+	        <v-list-item-group
+	          active-class="deep-purple--text text--accent-4"
+	        >
+	          <v-list-item>
+	            <v-list-item-title>Foo</v-list-item-title>
+	          </v-list-item>
+
+	          <v-list-item>
+	            <v-list-item-title>Bar</v-list-item-title>
+	          </v-list-item>
+
+	          <v-list-item>
+	            <v-list-item-title>Fizz</v-list-item-title>
+	          </v-list-item>
+
+	          <v-list-item>
+	            <v-list-item-title>Buzz</v-list-item-title>
+	          </v-list-item>
+	        </v-list-item-group>
+	      </v-list>
+	    </v-navigation-drawer>
+
+			<v-main style="margin-top: 60px !important;">
+				<h3 class="hover d-inline-flex">Meshur aydymcylar</h3>
+				<div class="ma-1 d-flex">
+					<v-hover v-slot="{ hover }">
+						<v-card 
+							width="200" 
+							height="200" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="img.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="200"
+		            width="200"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+        </div><br>
+
+        <h3 class="hover d-inline-flex">Meshur tegler</h3><br>        
+        <v-hover v-slot="{ hover }">
+        <v-chip
+		      class="ma-2"
+		      :color="hover ? 'deep-purple' : 'amber'"
+		      label
+		      :text-color="hover ? 'deep-purple' : 'amber'"
+		      outlined
+		    >
+		      <v-icon left>mdi-label</v-icon>
+		      Alan Walker
+		    </v-chip>
+		  </v-hover><br><br>
+
+		  <h3 class="hover d-inline-flex">Pleylistler</h3>
+				<div class="ma-1 d-flex">
+					<v-hover v-slot="{ hover }">
+						<v-card 
+							width="200" 
+							height="200" 
+							class="ma-1"
+							elevation="0"
+						>
+		          <v-img
+		            src="img.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="200"
+		            width="200"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Pleylist</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+        </div><br><br>
+
+        <h3 class="hover d-inline-flex">Taze aydymlar</h3>
+       <download-music></download-music>
+
+
+
+       <video height="400px" width="400px" controls>
+       		<source src="../assets/video.mp4" type="video/mp4">
+       			Your browser doesn't support video tag.
+       </video>
+
+			</v-main>
+		</v-app>
+	</div>
+</template>
+
+<script>
+	import downloadMusic from "../components/downloadMusic.vue";
+
+	export default{
+		components: {
+			downloadMusic,
+		},
+		data() {
+			return{
+				drawer: false,
+			}
+		}
+	}
+</script>
+
+
+<style>
+	.v-app-bar-title__content{
+		width: 100px !important;
+	}
+
+	.hover:hover{
+		animation: marginLeft .5s forwards; 
+	}
+
+	@keyframes marginLeft {
+		0% {
+			margin-left: 0px;
+		}
+		100% {
+			margin-left: 4px;
+		}
+	}
+
+
+	@media all and (max-width: 960px){
+		.bsmHide{
+			display:none !important;
+		}
+	}
+
+
+
+  @media all and (min-width: 960px){
+		.bmdHide{
+			display:none !important;
+		}
+  }
+</style>
