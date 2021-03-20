@@ -67,7 +67,7 @@
 		          v-on="on"
 		        >
 		          Aydymlar
-		          <v-icon right>mdi-arrow-down</v-icon>
+		          <v-icon right>mdi-chevron-down</v-icon>
 		        </v-btn>
 		      </template>
 
@@ -96,7 +96,7 @@
 		          v-on="on"
 		        >
 		          Bolumler
-		          <v-icon right>mdi-arrow-down</v-icon>
+		          <v-icon right>mdi-chevron-down</v-icon>
 		        </v-btn>
 		      </template>
 
