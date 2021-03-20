@@ -17,7 +17,11 @@
           @click="toggle"
           elevation="0"
         >
-          <v-img src="../assets/logo.png"></v-img>
+          <v-img  
+            src="https://www.themoviedb.org/t/p/w220_and_h330_face/pci1ArYW7oJ2eyTo2NMYEKHHiCP.jpg"
+            height="150"
+            width="150"
+          ></v-img>
         </v-card>
       </v-slide-item> 
     </v-slide-group>

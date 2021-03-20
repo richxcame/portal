@@ -176,28 +176,9 @@
 			<v-main style="margin-top: 60px !important;">
 				<slide-group></slide-group>
 
-				<h3 class="hover d-inline-flex">Meshur aydymcylar</h3>
-				<div class="ma-1 d-flex">
-					<v-hover v-slot="{ hover }">
-						<v-card 
-							width="200" 
-							height="200" 
-							class="ma-1" 
-							:elevation=" hover ? 2 : 0 "
-						>
-		          <v-img
-		            src="img.jpg"
-		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
-		            height="200"
-		            width="200"
-		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
-		          >
-		            <v-card-title class="justify-center">Aydymcy</v-card-title>
-		          </v-img>
-		        </v-card>
-	        </v-hover>
-        </div>
 
+
+        <h3 class="hover d-inline-flex">Meshur tegler</h3><br>        
 				<v-row justify="space-around">
 		    <v-col
 		      cols="12"
@@ -205,6 +186,7 @@
 		    >
 	        <v-chip-group
 	          active-class="deep-purple--text"
+	          show-arrows
 	        >
 	          <v-chip
 	          	outlined
@@ -218,50 +200,125 @@
 		    </v-col>
 		  </v-row>
 
-				
+		  <h3 class="hover d-inline-flex">Meshur aydymcylar</h3>
+		  <v-container>
+				<div class="ma-1 d-flex">
+					<v-hover v-slot="{ hover }">
+						<v-card 
+							width="220" 
+							height="330" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/d0OdD1I8qAfETvE9Rp9Voq7R8LR.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="330"
+		            width="220"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+	        <v-hover v-slot="{ hover }">
+						<v-card 
+							width="220" 
+							height="330" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="330"
+		            width="220"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+	        <v-hover v-slot="{ hover }">
+						<v-card 
+							width="220" 
+							height="330" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/dbsS4oBDwLTVTuIiqwTls9wD1I1.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="330"
+		            width="220"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+	        <v-hover v-slot="{ hover }">
+						<v-card 
+							width="220" 
+							height="330" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/bOth4QmNyEkalwahfPCfiXjNh1r.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="330"
+		            width="220"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+	        <v-hover v-slot="{ hover }">
+						<v-card 
+							width="220" 
+							height="330" 
+							class="ma-1" 
+							:elevation=" hover ? 2 : 0 "
+						>
+		          <v-img
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/d0OdD1I8qAfETvE9Rp9Voq7R8LR.jpg"
+		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
+		            height="330"
+		            width="220"
+		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+		          >
+		            <v-card-title class="justify-center">Aydymcy</v-card-title>
+		          </v-img>
+		        </v-card>
+	        </v-hover>
+        </div>
+        </v-container>
 
-        <h3 class="hover d-inline-flex">Meshur tegler</h3><br>        
-        <v-hover v-slot="{ hover }">
-        <v-chip
-		      class="ma-2"
-		      :color="hover ? 'deep-purple' : 'amber'"
-		      label
-		      :text-color="hover ? 'deep-purple' : 'amber'"
-		      outlined
-		    >
-		      <v-icon left>mdi-label</v-icon>
-		      Alan Walker
-		    </v-chip>
-		  </v-hover>
 
-		  
+        <h3 class="hover d-inline-flex">Taze aydymlar</h3>
+       <download-music></download-music>
 
 		  <h3 class="hover d-inline-flex">Pleylistler</h3>
 				<div class="ma-1 d-flex">
 					<v-hover v-slot="{ hover }">
 						<v-card 
-							width="200" 
-							height="200" 
+							width="220" 
+							height="330" 
 							class="ma-1"
 							elevation="0"
 						>
 		          <v-img
-		            src="img.jpg"
+		            src="https://www.themoviedb.org/t/p/w220_and_h330_face/pwDvkDyaHEU9V7cApQhbcSJMG1w.jpg"
 		            :class="hover ? 'deep-purple--text align-end' : 'white--text align-end'"
-		            height="200"
-		            width="200"
+		            height="220"
+		            width="330"
 		            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
-		          >
-		            <v-card-title class="justify-center">Pleylist</v-card-title>
-		          </v-img>
+		          ></v-img>
 		        </v-card>
 	        </v-hover>
-        </div><br><br>
-
-        <h3 class="hover d-inline-flex">Taze aydymlar</h3>
-       <download-music></download-music>
-
-
+        </div>       
 
        <!-- <video height="400px" width="400px" controls>
        		<source src="../assets/video.mp4" type="video/mp4">
@@ -309,6 +366,9 @@
 
 
 <style>
+	*{
+		font-family: Lato;
+	}
 	.v-app-bar-title__content{
 		width: 100px !important;
 	}
