@@ -5,7 +5,7 @@
 				<v-card 
 					height="60"
 					elevation="0"
-					color="amber lighten-5"
+					color="amber lighten-4"
 				>
 					<div class="d-inline-flex">
 					<v-img 
@@ -26,7 +26,7 @@
 				<v-card 
 					height="60"
 					elevation="0"
-					color="amber lighten-5"
+					color="amber lighten-4"
 				>
 					<div class="d-inline-flex">
 						<v-img 

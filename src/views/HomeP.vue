@@ -174,6 +174,8 @@
 	    </v-navigation-drawer>
 
 			<v-main style="margin-top: 60px !important;">
+				<slide-group></slide-group>
+
 				<h3 class="hover d-inline-flex">Meshur aydymcylar</h3>
 				<div class="ma-1 d-flex">
 					<v-hover v-slot="{ hover }">
@@ -194,7 +196,29 @@
 		          </v-img>
 		        </v-card>
 	        </v-hover>
-        </div><br>
+        </div>
+
+				<v-row justify="space-around">
+		    <v-col
+		      cols="12"
+		      md="10"
+		    >
+	        <v-chip-group
+	          active-class="deep-purple--text"
+	        >
+	          <v-chip
+	          	outlined
+	          	color="amber"
+	            v-for="tag in tags"
+	            :key="tag"
+	          >
+	            {{ tag }}
+	          </v-chip>
+		        </v-chip-group>
+		    </v-col>
+		  </v-row>
+
+				
 
         <h3 class="hover d-inline-flex">Meshur tegler</h3><br>        
         <v-hover v-slot="{ hover }">
@@ -208,7 +232,9 @@
 		      <v-icon left>mdi-label</v-icon>
 		      Alan Walker
 		    </v-chip>
-		  </v-hover><br><br>
+		  </v-hover>
+
+		  
 
 		  <h3 class="hover d-inline-flex">Pleylistler</h3>
 				<div class="ma-1 d-flex">
@@ -237,10 +263,10 @@
 
 
 
-       <video height="400px" width="400px" controls>
+       <!-- <video height="400px" width="400px" controls>
        		<source src="../assets/video.mp4" type="video/mp4">
        			Your browser doesn't support video tag.
-       </video>
+       </video> -->
 
 			</v-main>
 		</v-app>
@@ -249,14 +275,33 @@
 
 <script>
 	import downloadMusic from "../components/downloadMusic.vue";
+	import slideGroup from '../components/slideGroup.vue'
 
 	export default{
 		components: {
 			downloadMusic,
+			slideGroup,
 		},
 		data() {
 			return{
 				drawer: false,
+				tags: [
+        'Alan Walker',
+        'Martin Garrix',
+        'GitLab',
+        'Facebook',
+        'Instagram',
+        'Twitter',
+        'Twitch',
+        'Vimeo',
+        'Youtube',
+        'Github',
+        'Portal',
+        'Shageldi',
+        'Hangeldi',
+        'Baygeldi',
+        'Cholukov'
+      ],
 			}
 		}
 	}
