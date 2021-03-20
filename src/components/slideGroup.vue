@@ -19,7 +19,7 @@
         >
           <v-img src="../assets/logo.png"></v-img>
         </v-card>
-      </v-slide-item>
+      </v-slide-item> 
     </v-slide-group>
 </template>
 
