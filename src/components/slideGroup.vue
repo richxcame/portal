@@ -3,6 +3,7 @@
       v-model="model"
       class="pa-4"
       active-class="success"
+      show-arrows
     >
       <v-slide-item
         v-for="n in 15"
