@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '../views/HomePage.vue'
-import LoginPage from '../views/LoginPage.vue'
-import AboutPage from '../views/AboutPage.vue'
+import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import About from '../views/About.vue'
+import Movies from '../views/Movies.vue'
+import Tracks from '../views/Tracks.vue'
+import Images from '../views/Images.vue'
+import MovieDetails from '../views/MovieDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -10,17 +14,37 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage
+    component: Home
   },
   {
   	path: '/login',
   	name: 'Login',
-  	component: LoginPage
+  	component: Login
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutPage
+    component: About
+  },
+  {
+    path: '/movies',
+    name: 'Movies',
+    component: Movies
+  },
+  {
+    path: '/tracks',
+    name: 'Tracks',
+    component: Tracks
+  },
+  {
+    path: '/images',
+    name: 'Images',
+    component: Images
+  },
+  {
+    path: '/movie/:id',
+    name: 'MovieDetails.vue',
+    component: MovieDetails
   }
 ]
 
