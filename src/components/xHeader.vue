@@ -15,6 +15,7 @@
 			<router-link 
 				to="/"
 				class="mr-8"
+				v-if="isVisible"
 			>
 				<v-img
 					src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
@@ -52,7 +53,7 @@
       	<v-expand-transition>
 	        <v-text-field
 	        	class="mt-7 mr-4"
-            v-show="isClicked"
+	        	v-if="!isVisible"
             dense
             label="Search"
             type="search"
@@ -188,7 +189,6 @@
 	export default{
 		data() {
 			return{
-				isClicked: false,
 				isVisible: true,
 				drawer: false,
 				menuItems: [
@@ -203,9 +203,9 @@
 						route: "/tracks"
 					},
 					{
-						name: "Images",
+						name: "Videos",
 						transition: "slide-x-reverse-transition",
-						route: "/images"
+						route: "/videos"
 					}
 				],
 				navItems: [
@@ -227,12 +227,10 @@
 		methods: {
 			searchChange() {
 				this.isVisible = !this.isVisible;
-				this.isClicked = !this.isClicked;
 			},
 			handleSearch() {
 				console.log('...');
 				this.isVisible = !this.isVisible;
-				this.isClicked = !this.isClicked;
 			}
 		}
 	}

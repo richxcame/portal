@@ -5,8 +5,9 @@ import Login from '../views/Login.vue'
 import About from '../views/About.vue'
 import Movies from '../views/Movies.vue'
 import Tracks from '../views/Tracks.vue'
-import Images from '../views/Images.vue'
+import Videos from '../views/Videos.vue'
 import MovieDetails from '../views/MovieDetails.vue'
+import Watch from '../views/Watch.vue'
 
 Vue.use(VueRouter)
 
@@ -37,14 +38,19 @@ const routes = [
     component: Tracks
   },
   {
-    path: '/images',
-    name: 'Images',
-    component: Images
+    path: '/videos',
+    name: 'Videos',
+    component: Videos
   },
   {
     path: '/movie/:id',
     name: 'MovieDetails.vue',
     component: MovieDetails
+  },
+  {
+    path: '/watch/:id',
+    name: 'Watch',
+    component: Watch
   }
 ]
 

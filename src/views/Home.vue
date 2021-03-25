@@ -30,6 +30,7 @@
 					            placeholder="Search movies, images, tracks..."
 					            background-color="white"
 					            height="46"
+					            v-model="search"
 					          >
 					            <template v-slot:append>
 						            <v-btn
@@ -37,6 +38,7 @@
 						            	class="font-weight-bold"
 						            	rounded
 						            	height="46"
+						            	@click="searchQuery"
 						            >Search</v-btn>
 					            </template>
 					          </v-text-field>
@@ -46,78 +48,9 @@
 	    		</div>
 		    </v-row>
 
-				<div class="ma-5 bsmHide">
-					<h3 class="font-weight-black d-inline-flex mr-2">What's Popular</h3>
-					<div
-						style="border: 1px solid rgba(3,37,65,1); height: 30px; border-radius: 30px;"
-						class="d-inline-flex mx-4"
-					>
-						<div
-							class="px-5 font-weight-bold selectedDiv"
-							style="background-color: rgba(3,37,65,1) !important;"
-						>
-							<router-link 
-								to="/" 
-								class="d-inline-flex selector selected justify-center align-center"
-							>
-								Streaming
-							</router-link>
-						</div>
-						<div 
-							style="height: 28px; border-radius: 30px;"
-							class="d-inline-flex white--text justify-center align-center px-4 pl-n1" 
-						>
-							<router-link 
-								to="/" 
-								class="d-flex align-center justify-center selector  font-weight-bold"
-							>
-								On TV
-							</router-link>
-						</div>
-						<div 
-							style="height: 28px; border-radius: 30px;"
-							class="d-inline-flex white--text justify-center align-center px-4 pl-n1 " 
-						>
-							<router-link 
-								to="/"
-								class="d-flex align-center justify-center selector  font-weight-bold"
-							>
-								For Rent
-							</router-link>
-						</div>
-						<div 
-							style="height: 28px; border-radius: 30px;"
-							class="d-inline-flex white--text justify-center align-center px-4 pl-n1" 
-						>
-							<router-link 
-								to="/"
-								class="d-flex align-center justify-center selector  font-weight-bold"
-							>
-								In Theatres
-							</router-link>
-						</div>
-					</div>
+				<div class="ma-5">
+					<x-selector></x-selector>
 				</div>
-
-				<div class="ma-5 bmdHide">
-					<h3 class="font-weight-black d-inline-flex mr-2">What's Popular</h3>
-					<div
-						style="border: 1px solid rgba(3,37,65,1); height: 30px; border-radius: 30px;"
-						class="d-inline-flex ml-4"
-					>
-						<div 
-							class="pl-3 pr-2 font-weight-bold selectedDiv"
-							style="background-color: rgba(3,37,65,1)">
-							<router-link 
-								to="/" 
-								class="d-inline-flex selector selected justify-center align-center"
-							>
-								Streaming
-							</router-link>
-							<v-icon color="#1ed5a9">mdi-chevron-down</v-icon>
-						</div>
-					</div>
-				</div>				
 
 				<v-row class="ma-1 mb-3 d-flex flex-nowrap bScroll">
 					<v-card 
@@ -126,6 +59,7 @@
 						:key="i"
 						elevation="0"
 					>
+					<router-link :to="goToMovieDetails(trending.id)">
 						<v-img
 							class="rounded-lg"
 							max-width="150"
@@ -133,6 +67,7 @@
 							:src="trending.image"
 							gradient="to top right, rgba(0,0,0, 0), rgba(0,0,0, .5)"
 						></v-img>
+						</router-link>
 						<v-card-actions
 			        class="pt-6"
 			        style="position: relative;"
@@ -326,7 +261,7 @@
 
 			  <!-- trending tags -->
 			  <div>
-		    	<h3 class="hover d-inline-flex font-weight-black">Trending tags</h3><br>        
+		    	<h3 class="hover d-inline-flex font-weight-black">Popular tags</h3><br>        
 					<v-row justify="space-around">
 				    <v-col
 				      cols="12"
@@ -383,10 +318,13 @@
 </template>
 
 <script>
+	import Vuex from 'vuex';
+	import { mapState, mapActions } from 'vuex';
 	import downloadMusic from "../components/downloadMusic.vue"
 	import slideGroup from '../components/slideGroup.vue'
 	import xHeader from '../components/xHeader.vue'
 	import xFooter from '../components/xFooter.vue'
+	import xSelector from '../components/xSelector.vue'
 
 	export default {
 		components: {
@@ -394,9 +332,11 @@
 			slideGroup,
 			xHeader,
 			xFooter,
+			xSelector,
 		},
 		data() {
 			return{
+					search: '',
 					backgroundImage: "https://www.themoviedb.org/t/p/w1920_and_h427_multi_faces/rhulVKUoGXLB66d1LqJUhOcDB9O.jpg",
 					tags: [
 		        'Alan Walker',
@@ -470,52 +410,62 @@
 		      	{
 		      		name: "Lucifer",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg",
-		      		value: 82
+		      		value: 82,
+		      		id: 1,
 		      	},
 		      	{
 		      		name: "Love Alarm",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/hQ8Hobo1RpYuZVQJQOCycNMHAG.jpg",
-		      		value: 49
+		      		value: 49,
+		      		id: 2,
 		      	},
 		      	{
 		      		name: "The Mandalorian",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
-		      		value: 75
+		      		value: 75,
+		      		id: 3,
 		      	},
 		      	{
 		      		name: "Finding Ohana",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/tTWl37oAYRXS3D5mEHmjveXXyrN.jpg",
-		      		value: 45
+		      		value: 45,
+		      		id: 4
 		      	},
 		      	{
 		      		name: "Yes Day",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/rejrD9ovTHJbfmpLM0mbEliEPV6.jpg",
 		      		value: 78,
+		      		id: 5
 		      	},
 		      	{
 		      		name: "The Walking Dead",
 		      		image: "https://www.themoviedb.org/t/p/w440_and_h660_face/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg",
-		      		value: 91
+		      		value: 91,
+		      		id: 6
 		      	},
 		      	{
 		      		name: "Joker",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-		      		value: 95
+		      		value: 95,
+		      		id: 7
 		      	},
 		      	{
 		      		name: "Resident Alien",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/bG5aqfT5lTHuSbcQofNHtH0RyyP.jpg",
-		      		value: 91
+		      		value: 91,
+		      		id: 8
 		      	},
 		      	{
 		      		name: "Marvel Studios: Legends",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/EpDuYIK81YtCUT3gH2JDpyj8Qk.jpg",
-		      		value: 1
+		      		value: 1,
+		      		id: 9
 		      	},
 		      	{
 		      		name: "Red Dot",
 		      		image: "https://www.themoviedb.org/t/p/w220_and_h330_face/xZ2KER2gOHbuHP2GJoODuXDSZCb.jpg",
-		      		value: 78
+		      		value: 78,
+		      		id: 10
 		      	}
 		      ],
 		      latestTrailers: [
@@ -585,11 +535,21 @@
 		computed: {
 			backgroundImg() {
 				return "background-image: url(" + this.backgroundImage + ");" + "background-position: center center; background-size: cover; background-repeat: no-repeat; color: #fff; max-width: 1400px";
-			}
+			},
+			...mapState([
+				'searchResults',
+			])
 		},
 		methods: {
 			changeBackground(query){
 				this.backgroundImage = query;
+			},
+			goToMovieDetails(query) {
+				return `movie/${query}`; 
+			},
+			searchQuery() {
+				this.$store.dispatch('searchQuery', this.search)
+					.then((res) => console.log('...'));
 			}
 		}
 	}
