@@ -4,21 +4,6 @@
 
 		<v-main class="my-15">
 
-			<v-tabs
-          v-model="model"
-          centered
-          slider-color="rgb(1,180,228)"
-          slider-size="5"
-        >
-          <v-tab
-            v-for="i in 3"
-            :key="i"
-            :href="`#tab-${i}`"
-          >
-            Trailer {{ i }}
-          </v-tab>
-        </v-tabs>
-
 			<div class="backgroundZ0">
 				<v-row class="backgroundZ1 pa-4">
 					<v-col 
@@ -26,22 +11,30 @@
 						md="4"
 						class="d-flex justify-center"
 					>
-						<v-img 
-							src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/kl07N07l4XNjXF48oujzWXs40Dw.jpg"
-							max-height="450"
-							max-width="300"
-							class="d-flex align-center justify-center rounded-lg"
-						>
-							<v-btn 
-								icon 
-								large
+						<router-link to="/watch/1">
+							<v-img 
+								src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/kl07N07l4XNjXF48oujzWXs40Dw.jpg"
+								max-height="450"
+								max-width="300"
+								class="rounded-lg"
 							>
-								<v-icon 
-									large 
-									color="white"
-								>mdi-play</v-icon>
-							</v-btn>
-						</v-img>
+								<div 
+									class="d-flex align-center justify-center"
+									style="height: 100%;" 
+								>
+									<v-btn 
+										icon 
+										large
+										style="background-color:rgba(0,0,0, .8)"
+									>
+										<v-icon 
+											large 
+											color="white"
+										>mdi-play</v-icon>
+									</v-btn>
+								</div>
+							</v-img>
+						</router-link>
 					</v-col>
 					<v-col 
 						cols="12" 
@@ -73,7 +66,7 @@
 				    		large
 				    		class="mx-3"
 				    	>
-				    		<v-icon color="white">mdi-account</v-icon>
+				    		<v-icon color="white">mdi-thumb-up</v-icon>
 				    	</v-btn>
 				    	<v-btn 
 				    		icon 
@@ -81,15 +74,7 @@
 				    		large
 				    		class="mx-3"
 				    	>
-				    		<v-icon color="white">mdi-account</v-icon>
-				    	</v-btn>
-				    	<v-btn 
-				    		icon
-				    		color="rgb(3,37,65)"
-				    		large
-				    		class="mx-3"
-				    	>
-				    		<v-icon color="white">mdi-account</v-icon>
+				    		<v-icon color="white">mdi-thumb-down</v-icon>
 				    	</v-btn>
 				    </div>
 				    </v-row>
@@ -145,7 +130,6 @@
 	  },
 	  data () {
 	    return {
-	    	model: 'tab-2',
 	    	artists: [
 	    		{
 	    			name: "Asia Ortega",

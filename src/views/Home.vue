@@ -2,7 +2,7 @@
 	<div>
 		<v-app>
 			<!-- app bar -->
-			<x-header></x-header>			
+			<x-header></x-header>
 
 			<v-main style="margin-top: 72px !important;">
 
@@ -46,7 +46,7 @@
 					      </v-row>
 					    </v-container>
 	    		</div>
-		    </v-row>
+		    </v-row>	
 
 				<div class="ma-5">
 					<x-selector></x-selector>
@@ -188,11 +188,18 @@
 									max-height="168"
 									:src="item.image"
 									gradient="to top right, rgba(0,0,0, 0), rgba(0,0,0, .5)"
-									@mouseenter="changeBackground(item.backgroundImage)"
+									@mouseover="changeBackground(item.backgroundImage)"
 								>
 									<div class="d-flex align-center justify-center" style="height:100%; width: 100%">
-										<v-btn icon x-large>
-											<v-icon color="white" size="60">mdi-play</v-icon>
+										<v-btn 
+											icon 
+											style="background-color:rgba(0,0,0, .5)"
+											@click="movieDetails"
+										>
+											<v-icon 
+												color="white" 
+												size="40"
+											>mdi-play</v-icon>
 										</v-btn>
 									</div>
 								</v-img>
@@ -243,14 +250,14 @@
 					  			<p class="body-1 mb-4">Get access to maintain your own custom personal lists, track what you've seen and search and filter for what to watch next—regardless if it's in theatres, on TV or available on popular streaming services like Netflix, Disney Plus, and Amazon Prime Video</p>
 					  			<router-link 
 					  				class="community-link"
-					  				to="/" 
+					  				to="/login" 
 					  			>Sign Up</router-link>
 					  		</v-col>
 					  		<v-col cols="12" sm="6">
 					  			<ul class="body-1 ml-3">
-					  				<li>Enjoy TMDb ad free</li>
+					  				<li>Enjoy TMDb free</li>
 					  				<li>Maintain a personal watchlist</li>
-					  				<li>Log the movies and TV shows you've seen</li>
+					  				<li>Log the movies, tracks, videos shows you've seen</li>
 					  				<li>Build custom lists</li>
 					  				<li>Contribute to and improve our database</li>
 					  			</ul>
@@ -325,6 +332,7 @@
 	import xHeader from '../components/xHeader.vue'
 	import xFooter from '../components/xFooter.vue'
 	import xSelector from '../components/xSelector.vue'
+	import loader from '../components/loader.vue'
 
 	export default {
 		components: {
@@ -333,6 +341,7 @@
 			xHeader,
 			xFooter,
 			xSelector,
+			loader,
 		},
 		data() {
 			return{
@@ -550,6 +559,9 @@
 			searchQuery() {
 				this.$store.dispatch('searchQuery', this.search)
 					.then((res) => console.log('...'));
+			},
+			movieDetails() {
+				this.$router.push('/movie/1');
 			}
 		}
 	}

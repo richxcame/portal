@@ -22,6 +22,7 @@
 							:key="i"
 							elevation="4"
 							max-width="150"
+							to="/movie/1"
 						>
 							<v-img
 								class="rounded-lg"

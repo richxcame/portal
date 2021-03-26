@@ -1,5 +1,6 @@
 <template>
 	<v-app>
+
 		<x-header></x-header>
 
 		<main class="my-15">
@@ -15,9 +16,18 @@
 				</div>
 			</v-row>
 
-      <v-container>
-      	<v-row class="d-flex justify-space-around">
-		      <v-card
+			<v-row>
+
+				<x-filter></x-filter>
+
+				<v-col 
+					cols="12"
+					sm="6"
+					md="8"
+					lg="9"
+					class="d-flex flex-wrap justify-space-around"
+				>
+					<v-card
 		      	width="180"
 		      	v-for="(track, i) in tracks"
 		      	:key="i"
@@ -38,6 +48,7 @@
 			      			icon
 			      			large
 			      			class="ma-2"
+			      			to="/watch/1"
 			      		>
 			      			<v-icon 
 			      				color="black"
@@ -57,31 +68,83 @@
 			      	>
 			      		<v-icon 
 			      			color="rgb(30,213,169)"
-			      		>mdi-music</v-icon>
+			      		>mdi-music-note</v-icon>
 			      	</v-btn>
 		      	</v-card-actions>
-			      <v-card-text>Popular on TMDB</v-card-text>
+			    <v-btn
+			    	class="mt-4 font-weight-bold button white--text"
+			    >Download</v-btn>
 		      </v-card>
-	      </v-row>
-      </v-container>
+					<v-container>
+			      <v-row justify="center">
+			        <v-col cols="10" sm="8" md="6">
+			          <v-container class="max-width">
+			            <v-pagination
+			              v-model="page"
+			              :length="9"
+			              color="rgb(30, 213, 169)"
+			            ></v-pagination>
+			          </v-container>
+			        </v-col>
+			      </v-row>
+			    </v-container>
+				</v-col>
+
+
+
+			</v-row>
 		</main>
 
-		<x-footer></x-footer>
+		<v-footer
+			color="rgb(3,37,65)"
+			fixed
+			height="60"
+		>
+			<v-btn 
+				elevation="0" 
+				color="rgb(3,37,65)" 
+				icon
+				@click="changeRepeat"
+			>
+				<v-icon color="white">{{ footerRepeat }}</v-icon>
+			</v-btn>
+			<v-card class="ma-auto" color="rgb(3,37,65)" elevation="0">
+				<v-btn icon outlined small color="white">
+					<v-icon color="white" small>mdi-skip-previous</v-icon>
+				</v-btn>
+				<v-btn 
+					icon 
+					outlined 
+					color="white" 
+					class="mx-3"
+					@click="changeFooterIcon"
+				>
+					<v-icon color="white">{{ footerIcon }}</v-icon>
+				</v-btn>
+				<v-btn icon outlined small color="white">
+					<v-icon color="white">mdi-skip-next</v-icon>
+				</v-btn>
+			</v-card>
+		</v-footer>
+
 	</v-app>
 </template>
 
 <script>
 	import xHeader from '../components/xHeader.vue'
-	import xFooter from '../components/xFooter.vue'
+	import xFilter from '../components/xFilter.vue'
 
 	export default {
 	  name: 'Tracks',
 	  components: {
 	  	xHeader,
-	  	xFooter,
+	  	xFilter,
 	  },
 	  data () {
 	    return {
+	    	footerIcon: 'mdi-pause',
+	    	footerRepeat: 'mdi-repeat',
+	    	page: 1,
 	    	tracks: [
 	    		{
 	    			name: "Life Goes On",
@@ -142,10 +205,43 @@
 	    			name: "drivers license",
 	    			artist: "Olivia Rodrigo",
 	    			image: "https://lastfm.freetls.fastly.net/i/u/300x300/3e26f9ae4ed722293eb713beb8a740cd.webp"
+	    		},
+	    		{
+	    			name: "Life Goes On",
+	    			artist: "BTS",
+	    			image: "https://lastfm.freetls.fastly.net/i/u/300x300/3e26f9ae4ed722293eb713beb8a740cd.webp"
+	    		},
+	    		{
+	    			name: "test drive",
+	    			artist: "Ariana Grande",
+	    			image: "https://lastfm.freetls.fastly.net/i/u/300x300/bd579b724c2ba5b498c7abd5ec400915.webp"
+	    		},
+	    		{
+	    			name: "Telepatia",
+	    			artist: "Kali Uchis",
+	    			image: "https://lastfm.freetls.fastly.net/i/u/300x300/a2933af79f97f61aa749a771d9f80f86.webp"
 	    		}
 	    	]
 	    }
-	  }
+	  },
+    methods: {
+    	changeFooterIcon() {
+    		if (this.footerIcon == 'mdi-play'){
+    			this.footerIcon = 'mdi-pause';
+    		} else {
+    			this.footerIcon = 'mdi-play'
+    		}
+    	},
+    	changeRepeat() {
+    		if (this.footerRepeat == 'mdi-repeat') {
+    			this.footerRepeat = 'mdi-repeat-once';
+    		} else if (this.footerRepeat == 'mdi-repeat-once') {
+    			this.footerRepeat = 'mdi-repeat-off';
+    		} else {
+    			this.footerRepeat = 'mdi-repeat';
+    		}
+    	}
+    }
 	}
 </script>
 
@@ -165,5 +261,10 @@
 		background-image: url(https://www.last.fm/static/images/dashboard_header.f28f1fbea2f9.jpg);
 		background-size: cover;
 		background-position: center 100%;
+	}
+
+	.button {
+		background:linear-gradient(to right, rgb(30, 213, 169) 0%, rgb(1, 180, 228) 100%);
+		width: 100%;
 	}
 </style>

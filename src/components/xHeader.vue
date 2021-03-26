@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<section>
 		<v-app-bar
 			height="60"
 			style="background-color: rgba(3, 37, 65, 1);"
@@ -9,7 +9,7 @@
 		>
 			<v-app-bar-nav-icon 
 				class="bmdHide" 
-				@click.stop="drawer = !drawer"
+				@click="changeDrawer"
 			></v-app-bar-nav-icon>
 
 			<router-link 
@@ -24,6 +24,33 @@
 					class="bml center"
 				></v-img>
 			</router-link>
+
+			<v-spacer></v-spacer>
+
+			<!-- search icon-->
+			<v-btn 
+				background-color="rgba(3, 37, 65, 1)"
+				icon
+				class="mr-3"
+				@click="searchChange"
+				v-if="isVisible"
+			>
+				<v-icon color="white--text">mdi-magnify</v-icon>
+			</v-btn>
+
+    	<v-expand-transition>
+        <v-text-field
+        	class="mt-7 mr-4"
+        	v-if="!isVisible"
+          dense
+          label="Search"
+          type="search"
+          placeholder="More than you know..."
+          clearable
+          outlined
+          @keypress.enter="handleSearch"
+        ></v-text-field>
+    	</v-expand-transition>
 
 			<v-menu
 				v-for="(item, i) in menuItems"
@@ -40,7 +67,7 @@
 	        	v-bind="attrs"
 	        	v-on="on"
 	        >
-	      		<router-link 
+	      		<router-link
 	      			:to="item.route"
 	      			class="white--text"
 	      		>{{ item.name }}</router-link>
@@ -48,32 +75,8 @@
 	      </template>
   		</v-menu>
 
-			<v-spacer></v-spacer>
 
-      	<v-expand-transition>
-	        <v-text-field
-	        	class="mt-7 mr-4"
-	        	v-if="!isVisible"
-            dense
-            label="Search"
-            type="search"
-            placeholder="More than you know..."
-            clearable
-            outlined
-            @keypress.enter="handleSearch"
-          ></v-text-field>
-      	</v-expand-transition>
 
-			<!-- search -->
-			<v-btn 
-				background-color="rgba(3, 37, 65, 1)"
-				icon
-				class="mr-3"
-				@click="searchChange"
-				v-if="isVisible"
-			>
-				<v-icon color="white--text">mdi-magnify</v-icon>
-			</v-btn>
 
 			<v-menu
 				class="bsmHide"
@@ -149,40 +152,54 @@
 		</v-app-bar>
 
 		<v-navigation-drawer
-			class="pt-2"
+      style="z-index: 9999;"
       v-model="drawer"
-      absolute
-      temporary>
-	    <v-row justify="center">
-		    <v-expansion-panels popout>
-		      <v-expansion-panel>
-		        <v-expansion-panel-header>Phone</v-expansion-panel-header>
-		        <v-expansion-panel-content>
-		        	<v-list>
-					      <v-list-item-group
-					        active-class="border"
-					        color="deep-purple"
-					      >
-					        <v-list-item
-					          v-for="(item, i) in navItems"
-					          :key="i"
-					        >
-					          <v-list-item-icon>
-					            <v-icon>{{ item.icon }}</v-icon>
-					          </v-list-item-icon>
+      temporary
+      fixed
+      dark
+      color="rgba(1,180,228)"
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"      
+          active-class="deep-purple--text text--accent-4"
+        >
+        	<v-list-item 
+        		v-for="(item, i) in navItems"
+        		:key="i"
+        		:to="item.route"
+        		link
+        	>
+        		<v-list-item-icon>
+        			<v-icon>{{ item.icon }}</v-icon>
+        		</v-list-item-icon>
+        		<v-list-item-content>
+            	<v-list-item-title>{{ item.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
 
-					          <v-list-item-content>
-					            <v-list-item-title>{{ item.text }}</v-list-item-title>
-					          </v-list-item-content>
-					        </v-list-item>
-					      </v-list-item-group>
-					    </v-list>
-		        </v-expansion-panel-content>
-		      </v-expansion-panel>
-		    </v-expansion-panels>
-		  </v-row>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn 
+          	style="background-color:rgba(30,213,169,1)"
+          	class="white--text font-weight-black"
+          	elevation="0"
+          	block
+          >
+            Login
+          </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
-	</div>
+
+
+
+	</section>
 </template>
 
 <script>
@@ -208,20 +225,29 @@
 						route: "/videos"
 					}
 				],
+				group: null,
 				navItems: [
-		    	{
-		        icon: 'mdi-wifi',
-		        text: 'Wifi',
-		      },
-		      {
-		        icon: 'mdi-bluetooth',
-		        text: 'Bluetooth',
-		      },
-		      {
-		        icon: 'mdi-chart-donut',
-		        text: 'Data Usage',
-		      },
-		    ]
+					{
+						name: 'Home',
+						icon: 'mdi-home',
+						route: '/'
+					},
+					{
+						name: 'Movies',
+						icon: 'mdi-home',
+						route: '/movies'
+					},
+					{
+						name: 'Tracks',
+						icon: 'mdi-home',
+						route: '/tracks'
+					},
+					{
+						name: 'Videos',
+						icon: 'mdi-home',
+						route: '/videos'
+					}
+				]
 			}
 		},
 		methods: {
@@ -231,11 +257,13 @@
 			handleSearch() {
 				console.log('...');
 				this.isVisible = !this.isVisible;
+			},
+			changeDrawer() {
+				this.drawer = !this.drawer;
 			}
 		}
 	}
 </script>
 
 <style>
-
 </style>
