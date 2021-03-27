@@ -125,15 +125,6 @@
 					<v-icon color="white">mdi-skip-next</v-icon>
 				</v-btn>
 			</v-card>
-			<v-btn 
-				elevation="0" 
-				color="rgb(3,37,65)" 
-				icon
-				@click="changeRepeat"
-				class="ml-auto"
-			>
-				<v-icon color="white">{{ footerRepeat }}</v-icon>
-			</v-btn>
 		</v-footer>
 
 	</v-app>
