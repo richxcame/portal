@@ -1,13 +1,14 @@
 <template>
 	<v-app>
-		<v-main>
+		<x-header></x-header>
+		<v-main class="mt-15">
 		<v-row class="xHeight">
 			<v-col 
 				cols="12"
 				md="8"
 			>
 				<video
-					class="mx-auto my-4"
+					class="mx-auto mb-4 mt-1"
 					controls
 					style="height:60%; width: 101%;"
 					poster=""
@@ -37,7 +38,7 @@
 				md="4"
 				class="bsmHide rightList scrollY"
 			>
-				<v-row class="mt-1" v-for="(item, i) in 7" :key="i">
+				<v-row v-for="(item, i) in 7" :key="i">
 					<v-col cols="6">
 						<router-link to="/watch/1">
 							<v-img src="../assets/login.jpg" class="mt-1">
@@ -92,20 +93,25 @@
 </template>
 
 <script>
-export default {
-  name: 'Watch',
-  data () {
-    return {
+	import xHeader from '../components/xHeader.vue'
 
-    }
-  }
-}
+	export default {
+	  name: 'Watch',
+	  components: {
+	  	xHeader,
+	  },
+	  data () {
+	    return {
+
+	    }
+	  }
+	}
 </script>
 
 <style>
 
 	.rightList {
-		max-height: 100vh;
+		max-height: 90vh;
 		overflow-y: scroll;
 	}
 
@@ -158,7 +164,7 @@ export default {
 		}
 
 		.xHeight {
-			height: 100vh;
+			height: 90vh;
 		}
 	}
 </style>

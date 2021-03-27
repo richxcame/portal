@@ -14,7 +14,7 @@
 							outlined
 							height="45"
 							color="white"
-							class="rounded-0 input"
+							class="rounded-0 input blue--text"
 							background-color="white"
 							placeholder="GET STARTED bas"
 						>

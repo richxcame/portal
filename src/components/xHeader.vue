@@ -115,6 +115,24 @@
 	      </v-list>
   		</v-menu>
 
+  		<v-tooltip bottom>
+	      <template v-slot:activator="{ on, attrs }">
+	        <v-btn
+	        	class="bsmHide font-weight-bold mr-3"
+	          style="background-color: rgba(3,37,65, 1);"
+	          elevation="0"
+	          dark
+	          v-bind="attrs"
+	          v-on="on"
+	          icon
+	          @click="goToLoginPage"
+	        >
+	          <v-icon>mdi-login</v-icon>
+	        </v-btn>
+	      </template>
+	      <span>Login</span>
+	     </v-tooltip>
+
   		<!-- <v-menu
   			class="bsmHide"
 	      transition="slide-y-transition"
@@ -190,6 +208,7 @@
           	class="white--text font-weight-black"
           	elevation="0"
           	block
+          	@click="goToLoginPage"
           >
             Login
           </v-btn>
@@ -234,17 +253,17 @@
 					},
 					{
 						name: 'Movies',
-						icon: 'mdi-home',
+						icon: 'mdi-movie',
 						route: '/movies'
 					},
 					{
 						name: 'Tracks',
-						icon: 'mdi-home',
+						icon: 'mdi-music-note',
 						route: '/tracks'
 					},
 					{
 						name: 'Videos',
-						icon: 'mdi-home',
+						icon: 'mdi-video',
 						route: '/videos'
 					}
 				]
@@ -260,6 +279,9 @@
 			},
 			changeDrawer() {
 				this.drawer = !this.drawer;
+			},
+			goToLoginPage() {
+				this.$router.push('/login');
 			}
 		}
 	}

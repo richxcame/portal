@@ -94,15 +94,17 @@
 					</v-card>
 				</v-row>
 
-				<div class="column_wrapper">
 				<div
 					:style="backgroundImg"
-					
 				>
 				<div 
-					style="background: linear-gradient(to right, rgba(3,37,65, 0.75) 0%, rgba(3,37,65, 0.75) 100%)"
-					class="pt-4 pb-7 bScroll">
-					<div class="bsmHide" style="margin-top:30px;">
+					style="background: linear-gradient(to right, rgba(3,37,65, 0.75) 0%, rgba(3,37,65, 0.75) 100%);"
+					class="pt-4 pb-7 bScroll"
+				>
+					<div 
+						class="bsmHide" 
+						style="margin-top:30px;"
+					>
 						<h3 class="font-weight-bold d-inline-flex mx-3">Latest Trailers</h3>
 						<div
 							style="border: 1px solid #1ed5a9; height: 30px; border-radius: 30px;"
@@ -155,7 +157,7 @@
 						</div>
 						</div>
 
-						<div class="ma-2 bmdHide">
+						<div class="mx-2 mt-2 bmdHide">
 							<h3 class="font-weight-bold d-inline-flex mr-2">Latest Trailers</h3>
 							<div
 								style="border: 1px solid #1ed5a9; height: 30px; border-radius: 30px; overflow: hidden;"
@@ -175,11 +177,12 @@
 							</div>
 						</div>	
 				
-					<v-row class="mx-1 d-flex flex-nowrap" style="padding-top: 40px">
+					<div class="mx-1 d-flex flex-nowrap" style="padding-top: 40px">
 						<div
 							class="mx-1"
 							v-for="(item,i) in latestTrailers"
 							:key="i"
+							style="max-height: 240px;"
 						>
 							<v-hover v-slot="{ hover }">
 								<v-img
@@ -207,16 +210,15 @@
 								<center><h4 class="font-weight-bold white--text">{{ item.name }}</h4></center>
 				      	<center><h5 class="font-weight-bold white--text">{{ item.text }}</h5></center>
 						</div>
-					</v-row>
-				</div>
+					</div>
 				</div>
 				</div>
 
 				<!-- famous movies -->
-		    <div class="my-5">
-				  <h3 class="hover d-inline-flex font-weight-black">Famous movies</h3>
-				  <v-slide-group
-			      active-class="success"
+				<h3 class="hover d-inline-flex font-weight-black mt-4">Famous movies</h3>
+		    <div class="mb-4 bScroll">
+				  <!-- <v-slide-group
+			      active-class="#1ed5a9"
 			    >
 			      <v-slide-item
 			        v-for="(movie, i) in movies"
@@ -224,7 +226,7 @@
 			        v-slot="{ active, toggle }"
 			      >
 			        <v-card
-			          :color="active ? undefined : 'success lighten-1'"
+			          :color="active ? undefined : '#1ed5a9'"
 			          class="ma-4"
 			          height="330"
 			          width="220" 
@@ -238,7 +240,21 @@
 			          ></v-img>
 			        </v-card>
 			      </v-slide-item> 
-			    </v-slide-group>
+			    </v-slide-group> -->
+			    <div class="d-flex flex-nowrap mt-2 mb-4">
+			    	<v-card
+			    		v-for="(movie, i) in movies"
+			    		:key="i"
+			    		class="respectiveImg mx-1"
+			    		elevation="0"
+			    		to="/movie/1"
+			    	>
+				    	<v-img
+				    		:src="movie.img" 
+				    		class="rounded-lg"
+				    	></v-img>
+				    </v-card>
+			    </div>
 			  </div>
 
 			  <!-- community -->
@@ -664,6 +680,10 @@
 		.bmd{
 			margin-left: 5px;
 		}
+		.respectiveImg {
+			height: 250;
+			width: 200;
+		}
 	}
 
   @media all and (min-width: 960px){
@@ -672,6 +692,10 @@
 		}
 		.bml{
 			margin-left: 20px;
+		}
+		.respectiveImg {
+			height: 330;
+			width: 220;
 		}
   }
 </style>
