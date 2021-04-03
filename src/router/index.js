@@ -9,6 +9,14 @@ import Videos from '../views/Videos.vue'
 import MovieDetails from '../views/MovieDetails.vue'
 import Watch from '../views/Watch.vue'
 
+import Admin from '../views/admin/Admin.vue'
+
+import aHome from '../views/admin/pages/aHome.vue'
+import aVideos from '../views/admin/pages/aVideos.vue'
+import aTracks from '../views/admin/pages/aTracks.vue'
+import aMovies from '../views/admin/pages/aMovies.vue'
+import aBooks from '../views/admin/pages/aBooks.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -51,6 +59,18 @@ const routes = [
     path: '/watch/:id',
     name: 'Watch',
     component: Watch
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    children: [
+      { path: '', component: aHome },
+      { path: 'movies', component: aMovies },
+      { path: 'tracks', component: aTracks },
+      { path: 'books', component: aBooks },
+      { path: 'videos', component: aVideos }
+    ]
   }
 ]
 
