@@ -11,6 +11,7 @@
 		  </v-col>
 		  <v-col cols="6">
 			  <v-file-input
+			  	v-if="isVisibleFileUpload"
 			    :label="imageUploadName"
 			    outlined
 			    dense

@@ -3,6 +3,7 @@
 		<create-new
 			fileUploadName="Aýdymy saýlaň"
 			imageUploadName="Aýdymyň suraty"
+			isVisibleFileUpload="false"
 		></create-new>
 	</div>
 </template>
