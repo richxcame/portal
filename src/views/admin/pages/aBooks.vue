@@ -3,7 +3,8 @@
 		<create-new
 			fileUploadName="Kitaby saýlaň"
 			imageUploadName="Kitabyň suraty"
-			isVisibleFileUpload="false"
+			:isVisibleFileUpload="isHiden"
+			:kitapmy="!isHiden"
 		></create-new>
 	</div>
 </template>
@@ -17,7 +18,7 @@
 		},
 		data() {
 			return {
-
+				isHiden: false,
 			}
 		}
 	}

@@ -2,8 +2,11 @@
 	<div>
 		<create-new
 			fileUploadName="Filmi saýlaň"
-			imageUploadName="Filmiň suraty"
+			imageUploadName="Filme kici surat"
 			isVisibleFileUpload="true"
+			ulySurat="Filme uly surat"
+			:ulySuratGerekmi="hawa"
+			:kitapmy="kitapmy"
 		></create-new>
 	</div>
 </template>
@@ -17,7 +20,8 @@
 		},
 		data() {
 			return{
-
+				hawa: true,
+				kitapmy: false,
 			}
 		}
 	}

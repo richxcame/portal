@@ -1,16 +1,16 @@
 <template>
 	<section>
-		<data-table></data-table>
+		<complex-data></complex-data>
 	</section>
 </template>
 
 
 <script>
-	import dataTable from '../components/dataTable.vue'
+	import complexData from '../components/complexData.vue'
 
 	export default{
 		components: {
-			dataTable
+			complexData,
 		},
 		data() {
 			return {

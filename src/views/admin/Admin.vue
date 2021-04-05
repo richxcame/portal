@@ -8,7 +8,7 @@
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-avatar
-      		  color="deep-purple"
+      		  color="cyan darken-2"
       		  size="40"
       		  class="mt-1"
       		>
@@ -31,7 +31,7 @@
         dense
       >
         <v-list-item-group
-          color="primary"
+          color="cyan darken-2"
         >
           <v-list-item
             v-for="(item, i) in navItems"
@@ -54,7 +54,7 @@
     <v-app-bar
       dark
       app
-      color="rgb(3,37,65)"
+      style="background:linear-gradient(to right, rgba(30,213,169,1) 0%, rgba(1,180,228,1) 100%);"
       elevate-on-scroll
       src="https://picsum.photos/1920/1080?random"
       shrink-on-scroll
@@ -80,6 +80,22 @@
         <router-view></router-view>
       </v-container>
 		</v-main>
+
+    <v-footer 
+      app
+      style="background:linear-gradient(to right, rgba(30,213,169,1) 0%, rgba(1,180,228,1) 100%);"
+      inset
+      height="50"
+    >
+      <v-row class="pr-7">
+        <v-col 
+          cols="12"
+          class="text-right white--text font-italic"
+        >
+          Designed by xCame
+        </v-col>
+      </v-row>      
+    </v-footer>
 
 	</v-app>
 </template>

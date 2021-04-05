@@ -33,9 +33,24 @@
 	          <td>{{ item.name }}</td>
 	          <td>{{ item.description }}</td>
 	          <td class="text-right">
-	          	<v-btn icon>
-	          		<v-icon color="primary">mdi-update</v-icon>
-	          	</v-btn>
+	          	<v-dialog
+	          		v-model="dialog"
+	          		persistant
+	          		max-width="800px"
+	          	>
+	          		<template v-slot:activator="{ on, attrs }">
+	          			<v-btn 
+	          				icon
+	          				v-bind="attrs"
+	          				v-on="on"
+	          			>
+			          		<v-icon color="primary">mdi-update</v-icon>
+			          	</v-btn>
+	          		</template>
+	          		<v-card>
+	          			<create-new></create-new>
+	          		</v-card>
+	          	</v-dialog>
 	          	<v-btn icon>
 	          		<v-icon color="red darken-3" fab>mdi-delete</v-icon>
 	          	</v-btn>
@@ -48,9 +63,15 @@
 </template>
 
 <script>
+	import createNew from './createNew.vue'
+
 	export default {
+		components: {
+			createNew,
+		},
 	  data() {
 	    return {
+	    	dialog: false,
 	    	items: [
 	    		{ id: 1, 
 	    			image: "../pages/logo.svg", 

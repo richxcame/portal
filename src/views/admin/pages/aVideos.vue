@@ -1,11 +1,10 @@
 <template>
-	<div back>
-		<data-table></data-table>
-
+	<div>
 		<create-new
 			fileUploadName="Wideony saýlaň"
 			imageUploadName="Widonyň suraty"
 			isVisibleFileUpload="false"
+			:kitapmy="kitapmy"
 		></create-new>
 
 	</div>
@@ -13,16 +12,14 @@
 
 <script>
 	import createNew from '../components/createNew.vue'
-	import dataTable from '../components/dataTable.vue'
 
 	export default{
 		components: {
 			createNew,
-			dataTable,
 		},
 		data() {
 			return{
-
+				kitapmy: false,
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 			fileUploadName="Aýdymy saýlaň"
 			imageUploadName="Aýdymyň suraty"
 			isVisibleFileUpload="false"
+			:kitapmy="kitapmy"
 		></create-new>
 	</div>
 </template>
@@ -17,7 +18,7 @@
 		},
 		data() {
 			return {
-
+				kitapmy: false,
 			}
 		}
 	}
